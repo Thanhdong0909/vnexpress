@@ -23,7 +23,8 @@ switch ($action) {
 	 	//print_r($nameCategory);
 	 	 $img_quangcao = get_image_ads(1);
 	 	 $thongtin_doanhnghiep = get_image_ads(2);
-
+	 	 //data cho menu
+	 	 $theloai_menu=get_theloai();
 		include('../view/index.php');
 		break;
 	

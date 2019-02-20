@@ -39,16 +39,19 @@ ddsmoothmenu.init({
 </a>
 
 <div id="smoothmenu1" class="ddsmoothmenu">
-<ul>
-<li><a href="../">Trang chủ</a></li>
-<li><a href="#">Cấp 1</a>
-  <ul>
-  <li><a href="http://www.dynamicdrive.com">Sub Item 1.1</a></li>
-  <li><a href="http://www.dynamicdrive.com">Sub Item 1.2</a></li>
-  </ul>
-</li>
-
-</ul>
+	<ul>
+			<li><a href="../">Trang chủ</a></li>
+		<?php foreach($theloai_menu as $key=>$value):?>
+			<li><a href="#"><?php echo $value['TenTL'];?></a>
+			  <ul>
+			  	<?php $loaitin_by_theloai=get_loaitin_from_theloai($value['idTL']); ?>
+			  	<?php foreach($loaitin_by_theloai as $key=>$value):?>
+			  		<li><a href="#"><?php echo $value['Ten'];?></a></li>
+			 	<?php endforeach;?>
+			  </ul>
+			</li>
+		<?php endforeach;?>
+	</ul>
 <br style="clear: left" />
 </div>
 

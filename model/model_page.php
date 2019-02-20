@@ -132,5 +132,38 @@ function getNameCategory($idLt)
 			echo $err;
 		}
 	}
+function get_theloai()
+{
+	$db=database::getDB();
+	$query = 'SELECT * FROM theloai';
+	try {
+			$statement = $db->prepare($query);
+			$statement->execute();
+			$result=$statement->fetchALL();
+			$statement->closeCursor();
+			return $result;
+		
+	} catch (PDOException $e) {
+		$err = $e->getMessage();
+		echo $err;	
+	}
+}
+function get_loaitin_from_theloai($idTL)
+{
+	$db=database::getDB();
+	$query='SELECT Ten FROM loaitin WHERE idTL=:idTL';
+		try {
+			$statement = $db->prepare($query);
+			$statement->bindValue(':idTL', $idTL);
+			$statement->execute();
+			$result=$statement->fetchALL();
+			$statement->closeCursor();
+			return $result;
+		
+	} catch (PDOException $e) {
+		$err = $e->getMessage();
+		echo $err;	
+	}
+}
  
 ?>
