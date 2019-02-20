@@ -46,7 +46,7 @@ ddsmoothmenu.init({
 			  <ul>
 			  	<?php $loaitin_by_theloai=get_loaitin_from_theloai($value['idTL']); ?>
 			  	<?php foreach($loaitin_by_theloai as $key=>$value):?>
-			  		<li><a href="#"><?php echo $value['Ten'];?></a></li>
+			  		<li><a href="?p=tintrongloai&idLT=<?php echo $value['idLT'];?>"><?php echo $value['Ten'];?></a></li>
 			 	<?php endforeach;?>
 			  </ul>
 			</li>

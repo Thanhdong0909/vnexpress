@@ -151,7 +151,7 @@ function get_theloai()
 function get_loaitin_from_theloai($idTL)
 {
 	$db=database::getDB();
-	$query='SELECT Ten FROM loaitin WHERE idTL=:idTL';
+	$query='SELECT * FROM loaitin WHERE idTL=:idTL';
 		try {
 			$statement = $db->prepare($query);
 			$statement->bindValue(':idTL', $idTL);
