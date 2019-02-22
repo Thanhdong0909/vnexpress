@@ -184,7 +184,7 @@ function get_tin_from_theloai($idTL)
 		echo $err;	
 	}
 }
- function get_tin_from_theloai_haitin($idTL)
+function get_tin_from_theloai_haitin($idTL)
 {
 	$db=database::getDB();
 	$query='SELECT * FROM `tin` WHERE idTL=:idTL ORDER BY idTin DESC Limit 1,2';
@@ -193,6 +193,46 @@ function get_tin_from_theloai($idTL)
 		$statement->bindValue(':idTL', $idTL);
 		$statement->execute();
 		$result = $statement->fetchALL();
+		$statement->closeCursor();
+		return $result;
+		
+	}catch (PDOException $e)
+	{
+		$err = $e->getMessage();
+		echo $err;	
+	}
+}
+function get_tin_from_loaitin($idLT)
+{
+	$db=database::getDB();
+	$query='SELECT * FROM `tin` WHERE idLT=:idLT
+	ORDER BY idTin DESC';
+	try{
+		$statement=$db->prepare($query);
+		$statement->bindValue(':idLT', $idLT);
+		$statement->execute();
+		$result = $statement->fetchALL();
+		$statement->closeCursor();
+		return $result;
+		
+	}catch (PDOException $e)
+	{
+		$err = $e->getMessage();
+		echo $err;	
+	}
+}
+function breedCrumb($idLT)
+{
+	$db=database::getDB();
+	$query='SELECT Ten, TenTL FROM loaitin 
+	INNER JOIN theloai 
+	ON loaitin.idLT=theloai.idTL 
+	WHERE idLT=:idLT';
+	try{
+		$statement=$db->prepare($query);
+		$statement->bindValue(':idLT', $idLT);
+		$statement->execute();
+		$result = $statement->fetch();
 		$statement->closeCursor();
 		return $result;
 		

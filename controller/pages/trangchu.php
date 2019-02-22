@@ -7,7 +7,7 @@
         <div class="child-cat">
 		<?php $loaitin_by_theloai=get_loaitin_from_theloai($value['idTL']); ?>
 		<?php foreach($loaitin_by_theloai as $key=>$value) :?>
-        	<a href="#"><?php  echo $value['Ten'];?></a>
+        	<a href="?p=tintrongloai&idLT=<?php echo $value['idLT'];?>"><?php  echo $value['Ten'];?></a>
          <?php endforeach;?>
         </div>
         <div class="clear"></div>
@@ -15,12 +15,10 @@
         	<div class="col1">
             	<div class="news">
 				<?php $tin_by_theloai = get_tin_from_theloai($value['idTL']); ?>
-				    
-                    <h3 class="title" ><a href="#"><?php echo $tin_by_theloai['TieuDe'];?> </a></h3>
+                    <h3 class="title" ><a href="?p=chitiettin&idTin=<?php echo $tin_by_theloai['idTin'];?>"><?php echo $tin_by_theloai['TieuDe'];?> </a></h3>
                     <img class="images_news" src="upload/tintuc/<?php echo $tin_by_theloai['urlHinh'];?>" align="left" />
                     <div class="des"><?php echo $tin_by_theloai['TomTat'];?></div>
                     <div class="clear"></div>
-                   
 				</div>
             </div>
             <div class="col2">
