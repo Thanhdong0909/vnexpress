@@ -165,5 +165,41 @@ function get_loaitin_from_theloai($idTL)
 		echo $err;	
 	}
 }
- 
+
+function get_tin_from_theloai($idTL)
+{
+	$db=database::getDB();
+	$query='SELECT * FROM `tin` WHERE idTL=:idTL ORDER BY idTin DESC Limit 0,1';
+	try{
+		$statement=$db->prepare($query);
+		$statement->bindValue(':idTL', $idTL);
+		$statement->execute();
+		$result = $statement->fetch();
+		$statement->closeCursor();
+		return $result;
+		
+	}catch (PDOException $e)
+	{
+		$err = $e->getMessage();
+		echo $err;	
+	}
+}
+ function get_tin_from_theloai_haitin($idTL)
+{
+	$db=database::getDB();
+	$query='SELECT * FROM `tin` WHERE idTL=:idTL ORDER BY idTin DESC Limit 1,2';
+	try{
+		$statement=$db->prepare($query);
+		$statement->bindValue(':idTL', $idTL);
+		$statement->execute();
+		$result = $statement->fetchALL();
+		$statement->closeCursor();
+		return $result;
+		
+	}catch (PDOException $e)
+	{
+		$err = $e->getMessage();
+		echo $err;	
+	}
+}
 ?>
