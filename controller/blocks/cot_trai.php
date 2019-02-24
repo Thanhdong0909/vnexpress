@@ -11,7 +11,7 @@
                    <div class="col1">
                 <div class="news">
                   <img class="images_news" src="upload/tintuc/<?php echo $value['urlHinh'];?>"  />
-                    <h3 class="title" ><a href="?p=chitiettin&id=<?php echo $value['idTin'];?>"><?php echo $value['TieuDe'];?></a><span class="hit"><?php echo $value['SoLanXem'];?></span></h3>
+                    <h3 class="title" ><a href="?p=chitiettin&idTin=<?php echo $value['idTin'];?>"><?php echo $value['TieuDe'];?></a><span class="hit"><?php echo $value['SoLanXem'];?></span></h3>
                     <div class="clear"></div>
                 </div>
             </div>

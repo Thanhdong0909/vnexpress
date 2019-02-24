@@ -266,4 +266,58 @@ function breedCrumb($idLT)
 		echo $err;	
 	}
 }
+
+function get_chitiettin($idTin)
+{
+	$db=database::getDB();
+	$query='SELECT * FROM `tin` WHERE idTin=:idTin';
+	try{
+		$statement=$db->prepare($query);
+		$statement->bindValue(':idTin', $idTin);
+		$statement->execute();
+		$result = $statement->fetch();
+		$statement->closeCursor();
+		return $result;
+		
+	}catch (PDOException $e)
+	{
+		$err = $e->getMessage();
+		echo $err;	
+	}
+}
+
+function get_tincungloai($idTin, $idLT)
+{
+	$db=database::getDB();
+	$query="SELECT * FROM `tin` WHERE idLT=:idLT AND idTin<>:idTin ORDER BY RAND() LIMIT 0,3 ";
+	try {
+		$statement=$db->prepare($query);
+		 $statement->bindValue(':idLT', $idLT);
+		 $statement->bindValue(':idTin', $idTin);
+		$statement->execute();
+		$result = $statement->fetchALL();
+		$statement->closeCursor();
+		return $result;
+	} catch (PDOException $e) {
+		$err = $e->getMessage();
+		echo $err;	
+	}
+}
+
+function Demsolanxemtin()
+{
+	$db=database::getDB();
+	$query=" ";
+	try {
+		$statement=$db->prepare($query);
+		 // review update
+		$statement->execute();
+		$result = $statement->fetchALL();
+		$statement->closeCursor();
+		return $result;
+	} catch (PDOException $e) {
+		$err = $e->getMessage();
+		echo $err;	
+	}
+}
 ?>

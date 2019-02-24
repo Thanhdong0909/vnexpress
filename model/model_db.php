@@ -7,10 +7,6 @@ class dataBase{
 	private static $db;
 	private static $option = array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION, PDO::MYSQL_ATTR_INIT_COMMAND=>"SET NAMES utf8");
 
-	private function __constructr()
-	{
-
-	}
 	public static function getDB()
 	{
 		if(!isset($db))
