@@ -1,7 +1,20 @@
 <?php
  $idLT=$_GET['idLT'];
  settype($idLT,"integer");
- $list_loaitin=get_tin_from_loaitin($idLT);
+ $sotinmotrang=5; // mot trang se co 5 tin
+ if(isset($_GET['page']))
+ {    
+    $page=$_GET['page'];
+ }
+ else{
+    $page=1;
+ }
+$from=($page-1) * $sotinmotrang;
+
+$list_loaitin=get_tin_from_loaitin_phantrang($idLT,$from,$sotinmotrang);
+$soluongtin = count(get_tin_from_loaitin($idLT));
+$pageTotal=ceil($soluongtin/$sotinmotrang);
+
   $nameTL_LT = breedCrumb($idLT);
 ?>
 <div>
@@ -24,6 +37,13 @@
             
         </div>
     </div>
+</div>
+<div>Trang<br>
+    <hr>
+    <?php for($i=1; $i <= $pageTotal; $i++) { ?>
+        <a href="?p=tintrongloai&idLT=<?php echo $idLT;?>&page=<?php echo $i;?>"><?php echo $i." "?></a>
+    <?php } ?>
+     
 </div>
 
 

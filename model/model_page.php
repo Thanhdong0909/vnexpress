@@ -221,6 +221,30 @@ function get_tin_from_loaitin($idLT)
 		echo $err;	
 	}
 }
+
+function get_tin_from_loaitin_phantrang($idLT, $tinbatdau, $sotinmottrang)
+{
+	$db=database::getDB();
+	$query="SELECT * FROM `tin` WHERE idLT=:idLT
+	ORDER BY idTin DESC
+	LIMIT $tinbatdau,$sotinmottrang
+	";
+	try{
+		$statement=$db->prepare($query);
+		$statement->bindValue(':idLT', $idLT);
+		// $statement->bindValue(':tinbatdau',$tinbatdau); 
+		// $statement->bindValue(':sotinmottrang',$sotinmottrang);
+		$statement->execute();
+		$result = $statement->fetchALL();
+		$statement->closeCursor();
+		return $result;
+	}catch (PDOException $e)
+	{
+		$err = $e->getMessage();
+		echo $err;	
+	}
+}
+
 function breedCrumb($idLT)
 {
 	$db=database::getDB();
