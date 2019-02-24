@@ -38,10 +38,21 @@ $pageTotal=ceil($soluongtin/$sotinmotrang);
         </div>
     </div>
 </div>
-<div>Trang<br>
-    <hr>
+<style type="text/css">
+    #Phantrang a {
+    background-color: #000;
+    color: #FFO;
+    padding: 5px;
+    margin-right: 3px;
+}
+#Phantrang{
+    text-align: center;
+}
+</style>
+<div id="Phantrang">Xem tiếp<br><br>
+    
     <?php for($i=1; $i <= $pageTotal; $i++) { ?>
-        <a href="?p=tintrongloai&idLT=<?php echo $idLT;?>&page=<?php echo $i;?>"><?php echo $i." "?></a>
+        <a href="?p=tintrongloai&idLT=<?php echo $idLT;?>&page=<?php echo $i;?>" <?php if($i==$page) {echo "style='background-color:red'" ;}?>><?php echo $i." "?></a>
     <?php } ?>
      
 </div>
