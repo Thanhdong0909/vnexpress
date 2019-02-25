@@ -335,6 +335,25 @@ function getSearch($key)
 		$err = $e->getMessage();
 		echo $err;
 	}
-	
+}
+function checkUser($username,$password) {
+	$db=dataBase::getDB();
+	$query="SELECT * FROM users WHERE Username like :username AND Password like :password";
+	try {
+		$statement = $db->prepare($query);
+		$statement->bindValue(':username',$username);
+		$statement->bindValue(':password', $password);
+		// $statement->bindParam(1,$username);
+		// $statement->bindParam(2,$password);
+		$statement->execute();
+		$result = $statement->fetch();
+		//var_dump($result);
+		$statement->closeCursor();
+		return $result;
+		
+	} catch (PDOException $e) {
+		$err = $e->getMessage();
+		echo $err;
+	}
 }
 ?>

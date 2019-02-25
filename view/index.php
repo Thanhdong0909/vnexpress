@@ -1,5 +1,5 @@
 <?php
-
+ session_start();
  if(isset($_GET['p']))
  {
     $page = $_GET['p']; 
@@ -7,6 +7,29 @@
  else{
     $page = ' ';
  }
+?>
+<?php
+    if(isset($_POST['btnLogin']))
+    {
+        $username=filter_input(INPUT_POST, 'username');
+        $password=filter_input(INPUT_POST,'password');
+        $password = md5($password);
+        $isCorrectUser =checkUser($username,$password);
+        if(is_array($isCorrectUser)) {
+           $_SESSION['idUser']=$isCorrectUser['idUser'];
+           $_SESSION['Username']=$isCorrectUser['Username'];
+           $_SESSION['HoTen']=$isCorrectUser['HoTen'];
+           $_SESSION['idGroup']=$isCorrectUser['idGroup'];
+      } 
+    }
+?>
+<?php
+  if(isset($_POST['btnExit'])) {
+      unset($_SESSION['idUser']);
+      unset($_SESSION['Username']);
+      unset($_SESSION['Username']);
+      unset($_SESSION['Username']);
+  } 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -83,6 +106,13 @@
         </div>
         <div id="content-right">
 		<!--blocks/cot_phai.php-->
+        <?php if(isset($_SESSION['idUser'])){
+            require "pages/formHello.php";
+        } else {
+            require "pages/formLogin.php";
+        }
+        ?>
+
         <?php require "blocks/cot_phai.php"; ?>
         </div>
 
