@@ -304,15 +304,15 @@ function get_tincungloai($idTin, $idLT)
 	}
 }
 
-function Demsolanxemtin()
+function Demsolanxemtin($idTin)
 {
 	$db=database::getDB();
-	$query=" ";
+	$query="UPDATE `tin` SET SoLanXem=SoLanXem+1 WHERE idTin=:idTin";
 	try {
 		$statement=$db->prepare($query);
 		 // review update
+		$statement->bindValue(':idTin',$idTin);
 		$statement->execute();
-		$result = $statement->fetchALL();
 		$statement->closeCursor();
 		return $result;
 	} catch (PDOException $e) {
@@ -320,4 +320,5 @@ function Demsolanxemtin()
 		echo $err;	
 	}
 }
+
 ?>

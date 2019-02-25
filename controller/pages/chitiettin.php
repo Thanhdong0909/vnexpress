@@ -6,6 +6,7 @@
   else{
     $idTin=1;
   }
+  Demsolanxemtin($idTin); // tang so lan xem tin len 1
   $tinchitiet=get_chitiettin($idTin);
   $loaitin=$tinchitiet['idLT'];
    $tincungloai = get_tincungloai($idTin,$loaitin);
