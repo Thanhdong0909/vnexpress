@@ -67,6 +67,9 @@
              case 'tintrongloai':
                 require "pages/tintrongloai.php";
                     break;
+			 case 'search':
+				require "pages/getSearch.php";
+				break;
               case ' ':
                 require "pages/trangchu.php";
                  break;

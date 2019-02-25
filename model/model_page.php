@@ -314,11 +314,27 @@ function Demsolanxemtin($idTin)
 		$statement->bindValue(':idTin',$idTin);
 		$statement->execute();
 		$statement->closeCursor();
-		return $result;
 	} catch (PDOException $e) {
 		$err = $e->getMessage();
 		echo $err;	
 	}
 }
-
+function getSearch($key)
+{
+	$db=dataBase::getDB();
+	$query= "SELECT * FROM tin WHERE TieuDe LIKE '%$key%' 
+			LIMIT 0,10
+	";
+	try {
+		$statement = $db->prepare($query);
+		$statement->execute();
+		$result = $statement->fetchALL();
+		$statement->closeCursor();
+		return $result;
+	}catch(PDOException $e){
+		$err = $e->getMessage();
+		echo $err;
+	}
+	
+}
 ?>
