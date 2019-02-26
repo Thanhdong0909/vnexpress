@@ -27,8 +27,8 @@
   if(isset($_POST['btnExit'])) {
       unset($_SESSION['idUser']);
       unset($_SESSION['Username']);
-      unset($_SESSION['Username']);
-      unset($_SESSION['Username']);
+      unset($_SESSION['HoTen']);
+      unset($_SESSION['idGroup']);
   } 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
