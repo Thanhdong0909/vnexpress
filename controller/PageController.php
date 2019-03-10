@@ -18,8 +18,8 @@ switch ($action) {
 	 	$idloaitin = 2;
 	 	$informationViewMore = getInformationViewMore();
 	 	$NewInformationByCategoryId = tinmoinhat_theoloaitin_mottin($idloaitin); 
-	 	 $NewInformationByCategoryId_4tin=tinmoinhat_theoloaitin_bontin($idloaitin);
-	 	 $nameCategory = getNameCategory($idloaitin);
+	 	$NewInformationByCategoryId_4tin=tinmoinhat_theoloaitin_bontin($idloaitin);
+	 	$nameCategory = getNameCategory($idloaitin);
 	 	//print_r($nameCategory);
 	 	 $img_quangcao = get_image_ads(1);
 	 	 $thongtin_doanhnghiep = get_image_ads(2);
